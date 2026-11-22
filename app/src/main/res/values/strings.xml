@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Spotify</string>
+    <string name="top_bar_brand">Spotify</string>
+    <string name="btn_credits">Studio Mogli</string>
+    <string name="btn_update">Update</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_done">Done</string>
+    <string name="btn_close">Close</string>
+    <string name="login_screen_title">Account Sign-In</string>
+
+    <!-- Studio Mogli Credits Card -->
+    <string name="credit_badge">MADE BY STUDIO MOGLI</string>
+    <string name="credit_title">Spotify v1.0.0</string>
+    <string name="credit_subtitle">✓ Verified Clean  •  100% Malware-Free</string>
+    <string name="credit_body">Built for privacy and trust. Zero trackers, zero hidden permissions, and zero data collection. Your login stays strictly between your device and Spotify/Google.</string>
+    <string name="credit_team_line">Know someone who needs a website or custom software? Earn 10% on every closed project.</string>
+    <string name="btn_refer_earn">Refer &amp; Earn 10%</string>
+    <string name="btn_trust_guarantee">Privacy &amp; Security Guarantee</string>
+    <string name="btn_visit_site">Visit studiomogli.com</string>
+
+    <!-- First-Time / Post-Update Trust & Privacy Flash Card -->
+    <string name="trust_badge">100% MALWARE-FREE  •  VERIFIED</string>
+    <string name="trust_title">Welcome to Spotify</string>
+    <string name="trust_intro">Enjoy on-demand songs, unlimited skips, ad filtering, and screen-off background playback—crafted by Studio Mogli.</string>
+    <string name="trust_point_1_title">1. Your Account Stays Strictly Private</string>
+    <string name="trust_point_1_body">Sign-in happens directly on Spotify\'s or Google\'s official login page. Studio Mogli never sees, touches, or stores your email or password.</string>
+    <string name="trust_point_2_title">2. Why We Technically Cannot Collect Your Data</string>
+    <string name="trust_point_2_body">This app has zero backend servers, zero analytics SDKs, and zero ad trackers. It only requests Internet and Notification permissions needed to play audio—no contacts, storage, camera, or location access.</string>
+    <string name="trust_point_3_title">3. Screen-Off &amp; On-Demand Playback</string>
+    <string name="trust_point_3_body">Press the power button or switch apps anytime and music keeps playing. (Tip: Set Battery to Unrestricted in App Info for best results.)</string>
+    <string name="btn_trust_got_it">Got It — Start Listening</string>
+</resources>
