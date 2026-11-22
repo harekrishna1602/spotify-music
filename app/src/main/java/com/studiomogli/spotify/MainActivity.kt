@@ -22,7 +22,6 @@ import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
@@ -111,11 +110,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupTopBar() {
-        val topHeaderBar: LinearLayout = findViewById(R.id.topHeaderBar)
+        val btnToggleLibrary: TextView = findViewById(R.id.btnToggleLibrary)
         val btnCredits: TextView = findViewById(R.id.btnStudioMogliCredits)
 
-        topHeaderBar.setOnClickListener {
-            showStudioMogliCreditsDialog()
+        btnToggleLibrary.setOnClickListener {
+            if (::webView.isInitialized) {
+                webView.evaluateJavascript("window.__spToggleLibrary && window.__spToggleLibrary();", null)
+            }
         }
 
         btnCredits.setOnClickListener {
@@ -145,7 +146,7 @@ class MainActivity : AppCompatActivity() {
                 pkgInfo.versionCode.toLong()
             }
         } catch (e: Exception) {
-            1L
+            2L
         }
     }
 
@@ -157,9 +158,9 @@ class MainActivity : AppCompatActivity() {
                 @Suppress("DEPRECATION")
                 packageManager.getPackageInfo(packageName, 0)
             }
-            pkgInfo.versionName ?: "1.0.0"
+            pkgInfo.versionName ?: "1.1.0"
         } catch (e: Exception) {
-            "1.0.0"
+            "1.1.0"
         }
     }
 
@@ -340,8 +341,10 @@ class MainActivity : AppCompatActivity() {
             domStorageEnabled = true
             databaseEnabled = true
             mediaPlaybackRequiresUserGesture = false
+            // Mobile-native scaling: disable desktop overview zoom-out so text & cards stay phone-sized
             useWideViewPort = true
-            loadWithOverviewMode = true
+            loadWithOverviewMode = false
+            textZoom = 100
             setSupportZoom(false)
             builtInZoomControls = false
             displayZoomControls = false
@@ -361,7 +364,7 @@ class MainActivity : AppCompatActivity() {
 
         webView.addJavascriptInterface(AndroidBridge(), "AndroidBridge")
 
-        // CRITICAL FOR SPOTIFY: Grant Widevine Protected Media ID permission for DRM audio playback
+        // Grant Widevine Protected Media ID permission for Spotify DRM audio playback
         webView.webChromeClient = object : WebChromeClient() {
             override fun onPermissionRequest(request: PermissionRequest?) {
                 if (request == null) return
@@ -423,13 +426,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun handleNavigation(uri: Uri): Boolean {
         val scheme = uri.scheme?.lowercase() ?: return true
-        // Block spotify:// or intent:// deep links that try to launch Play Store / official app
         if (scheme != "https" && scheme != "http") {
             return true
         }
         val host = uri.host?.lowercase() ?: return true
 
-        // Route "Continue with Google" into the clean, isolated LoginActivity
         if (GOOGLE_AUTH_HOSTS.any { host == it || host.endsWith(".$it") }) {
             launchIsolatedGoogleSignIn(uri.toString())
             return true

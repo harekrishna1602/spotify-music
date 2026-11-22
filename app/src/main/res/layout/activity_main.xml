@@ -8,7 +8,7 @@
     <LinearLayout
         android:id="@+id/topHeaderBar"
         android:layout_width="match_parent"
-        android:layout_height="36dp"
+        android:layout_height="38dp"
         android:background="#000000"
         android:gravity="center_vertical"
         android:orientation="horizontal"
@@ -32,6 +32,21 @@
             android:text="@string/top_bar_brand"
             android:textColor="#FFFFFF"
             android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <!-- Slide-over Library Drawer Toggle -->
+        <TextView
+            android:id="@+id/btnToggleLibrary"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/bg_chip_dark"
+            android:gravity="center"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="@string/btn_library"
+            android:textColor="#FFFFFF"
+            android:textSize="11sp"
             android:textStyle="bold" />
 
         <!-- Hidden by default; appears automatically when a newer GitHub Release exists -->

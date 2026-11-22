@@ -13,9 +13,6 @@ import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 
-/**
- * Isolated OAuth Sign-In WebView (handles "Continue with Google" cleanly without JS injection).
- */
 class LoginActivity : AppCompatActivity() {
 
     companion object {
